@@ -1,10 +1,10 @@
-name: Java CI
+name: Java CI/CD
 
 on:
   push:
-    branches: [ "*" ]
+    branches: [ "main" ]  # Só faz o deploy na main
   pull_request:
-    branches: [ "*" ]
+    branches: [ "main" ]
 
 jobs:
   build:
@@ -25,3 +25,12 @@ jobs:
 
       - name: Rodar os testes
         run: mvn test
+
+      - name: Empacotar o projeto (gera .jar)
+        run: mvn package
+
+      - name: Salvar artefato (arquivo .jar)
+        uses: actions/upload-artifact@v4
+        with:
+          name: aplicacao-java
+          path: target/*.jar
