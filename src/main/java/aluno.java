@@ -1,7 +1,7 @@
 public class aluno {
     private String name;
     private String CPF;
-    private int matricula;
+    private Integer matricula;
 
     public aluno(String name, String CPF, int matricula) {
         this.name = name;
